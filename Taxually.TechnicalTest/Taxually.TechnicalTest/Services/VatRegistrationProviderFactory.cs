@@ -22,7 +22,7 @@ namespace Taxually.TechnicalTest.Services
             var isRegistered = _registeredProviders.TryGetValue(countryCode, out var providerType);
             if(!isRegistered)
             {
-                throw new Exception("Country not supported");
+                throw new BadHttpRequestException("Country not supported");
             }
 
             return (IVatRegistrationProvider)_serviceProvider.GetService(providerType);
